@@ -1,0 +1,12 @@
+
+Connect to your tenant
+Connect-SPOService -Url "https://tenant-admin.sharepoint.com"
+
+Extract site script from an existing site
+$SiteSchema = Get-SPOSiteScriptFromWeb   -WebUrl "https://tanant.sharepoint.com/sites/??
+"   -IncludeBranding    -IncludeRegionalSettings   -IncludeSiteExternalSharingCapability   -IncludedLists @("??")
+$SiteScript = Add-SPOSiteScript   -Title "Nytt prosjekt"   -Content $SiteSchema
+
+$SiteDesign = Add-SPOSiteDesign   -Title "Nytt prosjekt" 
+-WebTemplate 64 ` 
+-SiteScripts $SiteScript.Id `  -Description "** Eiendom"
