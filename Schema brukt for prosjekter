@@ -1,0 +1,141 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/site-design-script-actions.schema.json",
+  "actions": [
+    {
+      "verb": "activateSPFeature",
+      "featureId": "3bae86a2-776d-499d-9db8-fa4cdc7884f8",
+      "scope": "site"
+    },
+    {
+            "verb": "addContentTypesFromHub",
+            "ids": ["0x0101002EEDB31E41A8E3469C88B2A6B80C7E38","0x010100AC240A1C62C71A44940C881DD9EA3B91","0x0120D52000E467CD252B80474B86EE06C8D7550B2E","0x0120D52000C8E715D7409B1248981BA98D18D53EAC"]
+        },
+    {
+      "verb": "createSPList",
+      "listName": "[[LDocuments0001_listName]]",
+      "templateType": 101,
+      "color": "[[LDocuments0001_color]]",
+      "icon": "[[LDocuments0001_icon]]",
+      "addNavLink": "[[LDocuments0001_addNavLink]]",
+      "description": "[[LDocuments0001_description]]",
+      "identity": "LDocuments0001",
+      "subactions": [
+        {
+          "verb": "addSPFieldXml",
+          "schemaXml": "<Field ID=\"{08d89a66-4634-42b8-9d5a-0c27395a48b3}\" Type=\"Text\" Name=\"TriggerFlowInfo\" DisplayName=\"Trigger Flo
+w Info\" DisplaceOnUpgrade=\"TRUE\" Hidden=\"TRUE\" ReadOnlyEnforced=\"FALSE\" ReadOnly=\"TRUE\" Required=\"FALSE\" SourceID=\"http://schemas
+.microsoft.com/sharepoint/v3\" StaticName=\"TriggerFlowInfo\" />"
+        },
+        {
+          "verb": "addSPFieldXml",
+          "schemaXml": "<Field ID=\"{5f47e085-2150-41dc-b661-442f3027f552}\" ReadOnly=\"TRUE\" Type=\"Computed\" Name=\"SelectFilename\" Disp
+layName=\"Select\" Hidden=\"TRUE\" CanToggleHidden=\"TRUE\" Sortable=\"FALSE\" Filterable=\"FALSE\" AuthoringInfo=\"(web part connection)\" H
+eaderImage=\"blank.gif\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"SelectFilename\" FromBaseType=\"TRUE\"><FieldRe
+fs><FieldRef Name=\"ID\" /></FieldRefs><DisplayPattern><IfEqual><Expr1><GetVar Name=\"SelectedID\" /></Expr1><Expr2><Column Name=\"ID\" /></E
+xpr2><Then><HTML><![CDATA[<img align=\"absmiddle\" style=\"cursor: pointer\" src=\"/_layouts/15/images/rbsel.gif?rev=47\" alt=\"]]></HTML><HT
+ML>Selected</HTML><HTML><![CDATA[\"/>]]></HTML></Then><Else><HTML><![CDATA[<a href=\"javascript:SelectField(']]></HTML><GetVar Name=\"View\"
+/><HTML><![CDATA[',']]></HTML><ScriptQuote NotAddingQuote=\"TRUE\"><Column Name=\"ID\" /></ScriptQuote><HTML><![CDATA[');return false;\" oncl
+ick=\"javascript:SelectField(']]></HTML><GetVar Name=\"View\" /><HTML><![CDATA[',']]></HTML><ScriptQuote NotAddingQuote=\"TRUE\"><Column Name
+=\"ID\" /></ScriptQuote><HTML><![CDATA[');return false;\" target=\"_self\">]]></HTML><HTML><![CDATA[<img border=\"0\" align=\"absmiddle\" sty
+le=\"cursor: pointer\" src=\"/_layouts/15/images/rbunsel.gif?rev=47\"  alt=\"]]></HTML><HTML>Normal</HTML><HTML><![CDATA[\"/>]]></HTML><HTML>
+<![CDATA[</a>]]></HTML></Else></IfEqual></DisplayPattern></Field>"
+        },
+        {
+          "verb": "addSPFieldXml",
+          "schemaXml": "<Field ID=\"{321bc046-2178-49bd-893f-7aa4fd61d04e}\" ReadOnly=\"TRUE\" Type=\"Computed\" Name=\"PolicyDisabledUICapab
+ilities\" DisplaceOnUpgrade=\"TRUE\" DisplayName=\"Actions Disabled by Policy\" Filterable=\"FALSE\" Sortable=\"FALSE\" Hidden=\"TRUE\" Sourc
+eID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"PolicyDisabledUICapabilities\"><FieldRefs><FieldRef Name=\"FSObjType\" Key=\"
+Primary\" /><FieldRef Name=\"ID\" /></FieldRefs><DisplayPattern /></Field>"
+        },
+        {
+          "verb": "addContentType",
+          "name": "Document",
+          "id": "0x0101"
+        },
+        {
+          "verb": "addContentType",
+          "name": "Presentation",
+          "id": "0x0101002EEDB31E41A8E3469C88B2A6B80C7E38"
+        },
+        {
+          "verb": "addContentType",
+          "name": "Workbook",
+          "id": "0x010100AC240A1C62C71A44940C881DD9EA3B91"
+        },
+        {
+          "verb": "addContentType",
+          "name": "Folder",
+          "id": "0x0120"
+        },
+        {
+          "verb": "addContentType",
+          "name": "Property General",
+          "id": "0x0120D52000E467CD252B80474B86EE06C8D7550B2E"
+        },
+        {
+          "verb": "addContentType",
+          "name": "Property Project",
+          "id": "0x0120D52000C8E715D7409B1248981BA98D18D53EAC"
+        },
+        {
+          "verb": "addSPView",
+          "name": "All Documents",
+          "viewFields": [
+            "DocIcon",
+            "LinkFilename",
+            "Modified",
+            "Editor"
+          ],
+          "query": "<OrderBy><FieldRef Name=\"FileLeafRef\" /></OrderBy>",
+          "rowLimit": 30,
+          "isPaged": true,
+          "makeDefault": true,
+          "replaceViewFields": true
+        }
+      ]
+    },
+    {
+      "verb": "setSiteBranding",
+      "navigationLayout": "Cascade",
+      "headerLayout": "Compact",
+      "headerBackground": "None",
+      "headerColorIndex": -1,
+      "showFooter": false,
+      "footerColorIndex": -1,
+      "navigationPlacement": "Left"
+    },
+    {
+      "verb": "setSiteExternalSharingCapability",
+      "capability": "ExternalUserSharingOnly"
+    },
+    {
+      "verb": "setRegionalSettings",
+      "timeZone": 13,
+      "locale": 1033,
+      "sortOrder": 25,
+      "hourFormat": "12"
+    }
+  ],
+  "bindings": {
+    "LDocuments0001_listName": {
+      "source": "Input",
+      "defaultValue": "Documents"
+    },
+    "LDocuments0001_icon": {
+      "source": "Input",
+      "defaultValue": "0"
+    },
+    "LDocuments0001_description": {
+      "source": "Input",
+      "defaultValue": ""
+    },
+    "LDocuments0001_color": {
+      "source": "Input",
+      "defaultValue": "0"
+    },
+    "LDocuments0001_addNavLink": {
+      "source": "Input",
+      "defaultValue": "true"
+    }
+  }
+}
